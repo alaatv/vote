@@ -7,7 +7,7 @@ use App\UserVoteOption;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+//use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,9 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
-            $this->app->register(IdeHelperServiceProvider::class);
-        }
+//        if ($this->app->environment() !== 'production') {
+//            $this->app->register(IdeHelperServiceProvider::class);
+//        }
     }
 
     /**
@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
             if (strcmp($parameters[0], 'national_code') === 0) {
                 return $this->validateNationalCode($value);
             }
-        
+
             return true;
         });
     }
@@ -52,23 +52,23 @@ class AppServiceProvider extends ServiceProvider
         if (!preg_match('/^[0-9]{10}$/', $value)) {
             $flag = false;
         }
-        
+
         for ($i = 0; $i < 10; $i++) {
             if (preg_match('/^'.$i.'{10}$/', $value)) {
                 $flag = false;
             }
         }
-        
+
         for ($i = 0, $sum = 0; $i < 9; $i++) {
             $sum += ((10 - $i) * intval(substr($value, $i, 1)));
         }
-        
+
         $ret    = $sum % 11;
         $parity = intval(substr($value, 9, 1));
         if (($ret < 2 && $ret === $parity) || ($ret >= 2 && $ret === 11 - $parity)) {
             $flag = true;
         }
-        
+
         return $flag;
     }
 }
