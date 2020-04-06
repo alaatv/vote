@@ -7,7 +7,7 @@ use App\UserVoteOption;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+//use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,9 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
-            $this->app->register(IdeHelperServiceProvider::class);
-        }
+//        if ($this->app->environment() !== 'production') {
+//           $this->app->register(IdeHelperServiceProvider::class);
+//      }
     }
 
     /**
