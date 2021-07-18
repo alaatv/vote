@@ -42,6 +42,8 @@ class Kernel extends HttpKernel
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,
+//        new feature of laravel (disabling suggested by Mr Abozarkhanifard)
+//        \Fruitcake\Cors\HandleCors::class,
     ];
 
     /**
