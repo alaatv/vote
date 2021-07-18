@@ -8,6 +8,7 @@ use App\UserVoteOption;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Pagination\Paginator;
 //use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::withoutComponentTags();
+        Paginator::useBootstrap();
         UserVoteOption::observe(UserVoteOptionObserver::class);
         $this->defineValidationRules();
     }
