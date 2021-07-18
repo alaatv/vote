@@ -16,7 +16,6 @@ use App\Http\Controllers\Api\VoteController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Auth::routes(['verify' => true]);
 
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['middleware' => 'auth:api'], function () {
