@@ -12,4 +12,6 @@ app/Services/
 public/phpinfo.php
 public/test.php
 public/js/app.js
+public/js/app.js.map
 public/css/app.css
+public/css/fontawesome.css

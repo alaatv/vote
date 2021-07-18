@@ -19,9 +19,10 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-    .sourceMaps();
+    .sourceMaps()
+    .version();
 
 // mix.styles(['node_modules/@fortawesome/fontawesome-free/css/all.css'], 'public/css/fontawesome.css').version();
 
 // mix.sass('resources/sass/font-awesome.scss', 'public/css/fontawesome.css').version();
-mix.sass('resources/sass/font-awesome.scss', 'public/css/fontawesome.css');
+mix.sass('resources/sass/font-awesome.scss', 'public/css/fontawesome.css').version();
