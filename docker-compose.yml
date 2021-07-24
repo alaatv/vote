@@ -23,6 +23,7 @@ services:
       - redis
   mariadb:
     image: 'mariadb:10'
+    command: [ "mysqld" , "--innodb_strict_mode=OFF"]
     ports:
       - '${FORWARD_DB_PORT:-3306}:3306'
     environment:
