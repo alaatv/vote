@@ -22,7 +22,7 @@ Route::group(['prefix' => 'mobile'], function () {
 });
 Route::get('debug', [HomeController::class, 'debug']);
 Route::group(['middleware' => 'auth'] , function (){
-    Route::get('home', [HomeController::class, 'index'])->name('web.home')->middleware('mobile.verified');
+    Route::get('home', [HomeController::class, 'index'])->middleware('mobile.verified');
     Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('mobile.verified');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });

@@ -7,6 +7,8 @@ use App\UserVoteOption;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Pagination\Paginator;
 //use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::withoutComponentTags();
+        Paginator::useBootstrap();
         UserVoteOption::observe(UserVoteOptionObserver::class);
         $this->defineValidationRules();
     }
@@ -42,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
             if (strcmp($parameters[0], 'national_code') === 0) {
                 return $this->validateNationalCode($value);
             }
-        
+
             return true;
         });
     }
@@ -52,23 +56,23 @@ class AppServiceProvider extends ServiceProvider
         if (!preg_match('/^[0-9]{10}$/', $value)) {
             $flag = false;
         }
-        
+
         for ($i = 0; $i < 10; $i++) {
             if (preg_match('/^'.$i.'{10}$/', $value)) {
                 $flag = false;
             }
         }
-        
+
         for ($i = 0, $sum = 0; $i < 9; $i++) {
             $sum += ((10 - $i) * intval(substr($value, $i, 1)));
         }
-        
+
         $ret    = $sum % 11;
         $parity = intval(substr($value, 9, 1));
         if (($ret < 2 && $ret === $parity) || ($ret >= 2 && $ret === 11 - $parity)) {
             $flag = true;
         }
-        
+
         return $flag;
     }
 }

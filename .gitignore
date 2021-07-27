@@ -1,12 +1,10 @@
 /node_modules
-/storage/*.key
-/storage
-/storage/
 /vendor
 /.idea
 Homestead.json
 Homestead.yaml
 .env
+.rnd
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
 vendor/
@@ -15,4 +13,6 @@ app/Services/
 public/phpinfo.php
 public/test.php
 public/js/app.js
+public/js/app.js.map
 public/css/app.css
+public/css/fontawesome.css
